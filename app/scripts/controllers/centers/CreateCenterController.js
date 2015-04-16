@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        CreateCenterController: function (scope, resourceFactory, location, dateFilter) {
+        CreateCenterController: function (scope, resourceFactory, location, dateFilter, uiConfigService) {
             scope.offices = [];
             scope.staffs = [];
             scope.data = {};
@@ -10,6 +10,7 @@
             scope.restrictDate = new Date();
             scope.first.date = new Date();
             scope.addedGroups = [];
+            scope.choice = 1;
             resourceFactory.centerTemplateResource.get({staffInSelectedOfficeOnly:true},function (data) {
                 scope.offices = data.officeOptions;
                 scope.staffs = data.staffOptions;
@@ -56,7 +57,7 @@
                     }
                 }
             };
-
+            uiConfigService.appendConfigToScope(scope);
             scope.submit = function () {
                 var reqDate = dateFilter(scope.first.date, scope.df);
                 this.formData.activationDate = reqDate;
@@ -80,7 +81,7 @@
             };
         }
     });
-    mifosX.ng.application.controller('CreateCenterController', ['$scope', 'ResourceFactory', '$location', 'dateFilter', mifosX.controllers.CreateCenterController]).run(function ($log) {
+    mifosX.ng.application.controller('CreateCenterController', ['$scope', 'ResourceFactory', '$location', 'dateFilter','UIConfigService', mifosX.controllers.CreateCenterController]).run(function ($log) {
         $log.info("CreateCenterController initialized");
     });
 }(mifosX.controllers || {}));

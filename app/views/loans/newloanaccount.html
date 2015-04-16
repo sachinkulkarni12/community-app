@@ -28,7 +28,7 @@
         <td class="width36 paddedbottom10">
             <select ng-show="formData.productId" id="loanOfficerId" ng-model="formData.loanOfficerId"
                     ng-options="loanOfficer.id as loanOfficer.displayName for loanOfficer in loanaccountinfo.loanOfficerOptions | orderBy:'displayName':reverse"
-                    class="form-control width170px" value="{{loanOfficer.id}}">
+                    class="form-control width170px" value="{{loanOfficer.id}}" ng-disabled="response.uiDisplayConfigurations.loanAccount.isReadOnlyField.displayName == true">
                 <option value="">{{'label.selectloanofficer' | translate}}</option>
             </select>
         </td>
@@ -56,7 +56,7 @@
         <i class="icon-question-sign" tooltip="{{'label.tooltip.submittedon' | translate}}"></i></td>
         <td class="paddedbottom10">
             <input type="text" id="submittedOnDate" name="submittedon" datepicker-pop="dd MMMM yyyy"
-                   ng-model="date.first" is-open="opened" min="'2000-01-01'" max="restrictDate" class="form-control"/>
+                   ng-model="date.first" is-open="opened" min="'2000-01-01'" max="restrictDate" ng-disabled="response.uiDisplayConfigurations.loanAccount.isReadOnlyField.submittedOnDate == true" class="form-control"/>
         </td>
         <td>
             <label title="{{ 'label.input.expecteddisbursementon' | translate }}">{{ 'label.input.disbursementon' | translate }}<span class="required">*</span>:&nbsp;</label>

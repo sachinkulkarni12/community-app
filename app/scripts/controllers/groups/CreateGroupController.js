@@ -1,10 +1,9 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        CreateGroupController: function (scope, resourceFactory, location, dateFilter, routeParams) {
+        CreateGroupController: function (scope, resourceFactory, location, dateFilter, routeParams, uiConfigService) {
             scope.offices = [];
             scope.staffs = [];
             scope.data = {};
-            scope.choice = 0;
             scope.first = {};
             scope.first.submitondate = new Date();
             scope.first.date = new Date();
@@ -15,23 +14,36 @@
             scope.formData = {};
             scope.formData.clientMembers = [];
             scope.forceOffice = null;
+            scope.forceStaff = null;
+            scope.choice =1;
 
             var requestParams = {orderBy: 'name', sortOrder: 'ASC', staffInSelectedOfficeOnly: true};
-            if (routeParams.centerId) {
-                requestParams.centerId = routeParams.centerId;
+            if (routeParams.officeId){
+                requestParams.officeId = routeParams.officeId;
             }
             resourceFactory.groupTemplateResource.get(requestParams, function (data) {
                 scope.offices = data.officeOptions;
                 scope.staffs = data.staffOptions;
                 scope.clients = data.clientOptions;
-                if(routeParams.officeId) {
-                    scope.formData.officeId = routeParams.officeId;
-                    for(var i in data.officeOptions) {
-                        if(data.officeOptions[i].id == routeParams.officeId) {
-                            scope.forceOffice = data.officeOptions[i];
+                scope.center  = data.centerOptions;
+                if(routeParams.staffId) {
+                    for(var i in scope.staffs) {
+                        if (scope.staffs[i].id == routeParams.staffId) {
+                            scope.formData.staffId = scope.staffs[i].id;
                             break;
                         }
                     }
+                    scope.forceStaff = scope.formData.staffId;
+                }
+
+                if(routeParams.officeId) {
+                    for(var i in scope.offices) {
+                        if (scope.offices[i].id == routeParams.officeId) {
+                            scope.formData.officeId = scope.offices[i].id;
+                            break;
+                        }
+                    }
+                    scope.forceOffice = scope.formData.officeId;
                 }
                 if(routeParams.groupId) {
                     if(typeof data.staffId !== "undefined") {
@@ -86,7 +98,7 @@
         	}else {
         		scope.cancel = "#/groups"
         	}
-
+            uiConfigService.appendConfigToScope(scope);
             scope.submit = function () {
                 for (var i in scope.addedClients) {
                     scope.formData.clientMembers[i] = scope.addedClients[i].id;
@@ -114,7 +126,7 @@
             };
         }
     });
-    mifosX.ng.application.controller('CreateGroupController', ['$scope', 'ResourceFactory', '$location', 'dateFilter', '$routeParams', mifosX.controllers.CreateGroupController]).run(function ($log) {
+    mifosX.ng.application.controller('CreateGroupController', ['$scope', 'ResourceFactory', '$location', 'dateFilter', '$routeParams', 'UIConfigService', mifosX.controllers.CreateGroupController]).run(function ($log) {
         $log.info("CreateGroupController initialized");
     });
 }(mifosX.controllers || {}));
