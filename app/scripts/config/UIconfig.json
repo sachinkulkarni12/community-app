@@ -27,10 +27,12 @@
         "collateralSection": true
       },
       "isReadOnlyField": {
-        "loanTermFrequencyType": true
+        "loanTermFrequencyType": true,
+        "submittedOnDate": true,
+        "displayName": true
       },
       "isDefaultValue": {
-        "fundId": 12
+        "fundId": 45
       }
     },
 
@@ -63,7 +65,8 @@
       "isReadOnlyField":{
         "loanTermFrequencyType": true,
         "submittedOnDate": true,
-        "externalId": true
+        "externalId": true,
+        "displayName": true
       }
     },
 

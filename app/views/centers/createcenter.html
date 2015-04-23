@@ -45,10 +45,10 @@
 	            <label class="control-label col-sm-2" for="active">{{'label.input.active' | translate}}</label>
 	
 	            <div class="col-sm-3">
-	                <input type="checkbox" id="active" data-ng-change="setChoice()" ng-model="formData.active" ng-disabled="response.uiDisplayConfigurations.createCenter.isReadOnlyField.active == true" ng-checked="response.uiDisplayConfigurations.createCenter.isReadOnlyField.active == true">
+	                <input type ="checkbox" id="active" data-ng-change="setChoice()" ng-model="formData.active"  ng-disabled="response.uiDisplayConfigurations.createCenter.isReadOnlyField.active == true" ng-checked="response.uiDisplayConfigurations.createCenter.isReadOnlyField.active == true">
 	            </div>
 		        <div data-ng-switch on="choice">
-		            <div class="form-group" data-ng-switch-when="1">
+		            <div class="form-group" data-ng-switch-when="1" >
 		                <label class="control-label col-sm-2">{{'label.input.activationdate' | translate}}<span class="required">*</span></label>
 		
 		                <div class="col-sm-3">
