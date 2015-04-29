@@ -3,6 +3,10 @@
 
     "#Headings": "..",
     "label.heading.name": "Name",
+    "label.heading.centername": "Center Name",
+    "label.heading.centerid": "Center Id",
+    "label.heading.groupname": "Group Name",
+    "label.heading.groupid": "Group Id",
     "label.heading.accnum": "Account #",
     "label.heading.staff": "Staff",
     "label.heading.office": "Office",

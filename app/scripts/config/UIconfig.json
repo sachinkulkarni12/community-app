@@ -20,7 +20,9 @@
         "graceOnInterestCharged": true,
         "transactionProcessingStrategyId": true,
         "graceOnInterestPayment": true,
-        "graceOnArrearsAgeing": true
+        "graceOnArrearsAgeing": true,
+        "loanTermFrequencyType": true,
+        "fixedEmiAmount": true
       },
       "isHiddenSection": {
         "interestRecalculationSection": true,
@@ -29,7 +31,8 @@
       "isReadOnlyField": {
         "loanTermFrequencyType": true,
         "submittedOnDate": true,
-        "displayName": true
+        "displayName": true,
+        "interestRatePerPeriod": true
       },
       "isDefaultValue": {
         "fundId": 45
@@ -55,7 +58,9 @@
         "graceOnInterestCharged": true,
         "transactionProcessingStrategyId": true,
         "graceOnInterestPayment": true,
-        "graceOnArrearsAgeing": true
+        "graceOnArrearsAgeing": true,
+        "loanTermFrequencyType": true,
+        "fixedEmiAmount": true
       },
       "isHiddenSection": {
         "interestRecalculationSection": true,
@@ -66,7 +71,8 @@
         "loanTermFrequencyType": true,
         "submittedOnDate": true,
         "externalId": true,
-        "displayName": true
+        "displayName": true,
+        "interestRatePerPeriod": true
       }
     },
 
@@ -96,6 +102,18 @@
     },
 
     "editClient":{
+      "isReadOnlyField":{
+        "externalId": true
+      }
+    },
+
+    "editGroup":{
+      "isReadOnlyField":{
+        "externalId": true
+      }
+    },
+
+    "editCenter":{
       "isReadOnlyField":{
         "externalId": true
       }

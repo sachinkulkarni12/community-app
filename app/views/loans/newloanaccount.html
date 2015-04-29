@@ -142,9 +142,9 @@
                            number-format required late-Validate/>&nbsp;{{loanaccountinfo.currency.displaySymbol}}
                     <form-validate valattributeform="newloanaccountform" valattribute="principal"/>
                 </td>
-                <td class="width14"><label>{{ 'label.input.loanterm' | translate }}&nbsp;<span class="required">*</span>:</label>
+                <td class="width14" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.loanTermFrequencyType == true"><label>{{ 'label.input.loanterm' | translate }}&nbsp;<span class="required">*</span>:</label>
                 </td>
-                <td class="width36 paddedbottom10">
+                <td class="width36 paddedbottom10" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.loanTermFrequencyType == true">
                     <input id="loanTermFrequency" class="form-control" name="loanterm" type="text"
                            ng-model="formData.loanTermFrequency" required late-Validate/>
                     <select ng-disabled="response.uiDisplayConfigurations.loanAccount.isReadOnlyField.loanTermFrequencyType == true" id="loanTermFrequencyType" class="form-control" ng-model="formData.loanTermFrequencyType"
@@ -204,7 +204,7 @@
                         class="required">*</span></label></td>
                 <td class="paddedbottom10">
                     <input id="interestRatePerPeriod" class="form-control" type="text" name="nominalinterestrate"
-                           ng-model="formData.interestRatePerPeriod" required late-Validate/>&nbsp;&nbsp;{{loanaccountinfo.interestRateFrequencyType.value}}
+                           ng-model="formData.interestRatePerPeriod" ng-disabled="response.uiDisplayConfigurations.loanAccount.isReadOnlyField.interestRatePerPeriod == true" required late-Validate/>&nbsp;&nbsp;{{loanaccountinfo.interestRateFrequencyType.value}}
                 </td>
                 <td ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.interestType == true"><label>{{ 'label.input.interestmethod' | translate }}</label></td>
                 <td class="paddedbottom10" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.interestType == true">
@@ -268,7 +268,7 @@
                 </td>
             </tr>
             <tr data-ng-show="loanaccountinfo.canDefineInstallmentAmount">
-                <td colspan=2>
+                <td colspan=2 ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.fixedEmiAmount == true">
                     <label>{{ 'label.input.fixedemiamount' | translate }}:</label>&nbsp;
                     <input id="fixedEmiAmount" type="text" ng-model="formData.fixedEmiAmount" class="form-control" number-format/>&nbsp;
 

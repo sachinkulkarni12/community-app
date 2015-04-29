@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        EditCenterController: function (scope, resourceFactory, location, routeParams, dateFilter) {
+        EditCenterController: function (scope, resourceFactory, location, routeParams, dateFilter, uiConfigService) {
             scope.managecode = routeParams.managecode;
             scope.first = {};
             scope.first.date = new Date();
@@ -34,6 +34,7 @@
                     location.path('/viewcenter/' + routeParams.id);
                 });
             };
+            uiConfigService.appendConfigToScope(scope);
             scope.activate = function () {
                 var reqDate = dateFilter(scope.first.date, scope.df);
                 var newActivation = new Object();
@@ -46,7 +47,7 @@
             };
         }
     });
-    mifosX.ng.application.controller('EditCenterController', ['$scope', 'ResourceFactory', '$location', '$routeParams', 'dateFilter', mifosX.controllers.EditCenterController]).run(function ($log) {
+    mifosX.ng.application.controller('EditCenterController', ['$scope', 'ResourceFactory', '$location', '$routeParams', 'dateFilter','UIConfigService', mifosX.controllers.EditCenterController]).run(function ($log) {
         $log.info("EditCenterController initialized");
     });
 }(mifosX.controllers || {}));

@@ -38,7 +38,7 @@
                     <label class="control-label col-sm-2" for="externalid">{{'label.input.externalid' | translate}}</label>
 
                     <div class="col-sm-3">
-                        <input type="text" id="externalId" ng-model="formData.externalId" class="form-control"/>
+                        <input type="text" id="externalId" ng-model="formData.externalId" ng-disabled="response.uiDisplayConfigurations.editCenter.isReadOnlyField.externalId == true" class="form-control"/>
                     </div>
                 </div>
                 <div data-ng-hide="edit.status.value=='Pending'" class="form-group">
