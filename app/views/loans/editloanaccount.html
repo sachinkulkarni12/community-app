@@ -407,7 +407,7 @@
                 <th>{{'label.heading.date' | translate}}</th>
                 <th>{{'label.heading.actions' | translate}}</th>
             </tr>
-            <tr ng-repeat="charge in charges">
+            <tr ng-repeat="charge in charges" ng-hide="charge.chargeTimeType.id == 12">
                 <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
                 <td>{{charge.chargeCalculationType.value}}</td>
                 <td><input id="{{charges[$index].amount}}" class="form-control" number-format type="text" ng-model="charge.amountOrPercentage"
@@ -421,6 +421,23 @@
                 <td><a ng-click="deleteCharge($index)"><i class="icon-remove icon-white"></i></a></td>
             </tr>
         </table>
+        <div ng-show="loanaccountinfo.disbursementCharges.length>0">
+            <label><strong>{{ 'label.heading.disbursementcharge' | translate }}</strong></label>
+            <table class="table" class="width100">
+                <tr class="graybg">
+                    <th>{{'label.heading.name' | translate}}</th>
+                    <th>{{'label.heading.type' | translate}}</th>
+                    <th>{{'label.heading.amount' | translate}}</th>
+                    <th>{{'label.heading.collectedon' | translate}}</th>
+                </tr>
+                <tr ng-repeat="charge in loanaccountinfo.disbursementCharges">
+                    <td>{{charge.name}},{{charge.currency.displaySymbol}}</td>
+                    <td>{{charge.chargeCalculationType.value}}</td>
+                    <td>{{charge.amount| number}}</td>
+                    <td>{{charge.chargeTimeType.value}}</td>
+                </tr>
+            </table>
+        </div>
         <div ng-show="loanaccountinfo.overdueCharges.length>0">
             <label><strong>{{ 'label.heading.overduepenalitycharge' | translate }}</strong></label>
             <table class="table" class="width100">

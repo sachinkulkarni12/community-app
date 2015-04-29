@@ -22,7 +22,8 @@
         "graceOnInterestPayment": true,
         "graceOnArrearsAgeing": true,
         "loanTermFrequencyType": true,
-        "fixedEmiAmount": true
+        "fixedEmiAmount": true,
+        "graceOnArrearsAgeing": true
       },
       "isHiddenSection": {
         "interestRecalculationSection": true,
@@ -32,7 +33,8 @@
         "loanTermFrequencyType": true,
         "submittedOnDate": true,
         "displayName": true,
-        "interestRatePerPeriod": true
+        "interestRatePerPeriod": true,
+        "displayName": true
       },
       "isDefaultValue": {
         "fundId": 45
@@ -60,7 +62,8 @@
         "graceOnInterestPayment": true,
         "graceOnArrearsAgeing": true,
         "loanTermFrequencyType": true,
-        "fixedEmiAmount": true
+        "fixedEmiAmount": true,
+        "graceOnArrearsAgeing": true
       },
       "isHiddenSection": {
         "interestRecalculationSection": true,
@@ -72,7 +75,8 @@
         "submittedOnDate": true,
         "externalId": true,
         "displayName": true,
-        "interestRatePerPeriod": true
+        "interestRatePerPeriod": true,
+        "displayName": true
       }
     },
 
