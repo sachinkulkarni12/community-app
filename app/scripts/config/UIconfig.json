@@ -1,34 +1,104 @@
 {
-  "enableUIDisplayConfiguration": false,
+  "enableUIDisplayConfiguration": true,
   "uiDisplayConfigurations": {
 	"loanAccount": {
-	  "isHiddenField": {
-		"fundId": true,
-		"linkAccountId": true,
-		"createStandingInstruction": true,
-		"numberOfRepayments": true,
-		"repaymentEvery": true,
-		"repaymentFrequencyType": true,
-		"repaymentFrequencyNthDayType": true,
-		"repaymentFrequencyDayOfWeekType": true,
-		"interestChargedFromDate": true,
-		"repaymentsStartingFromDate": true,
-		"interestType": true,
-		"amortizationType": true,
-		"interestCalculationPeriodType": true,
-		"inArrearsTolerance": true,
-		"graceOnInterestCharged": true,
-		"transactionProcessingStrategyId": true,
-		"graceOnInterestPayment": true,
-		"graceOnArrearsAgeing": true
-	  },
-	  "isHiddenSection": {
-		"interestRecalculationSection": true,
-		"collateralSection": true
-	  },
-	  "isReadOnlyField": {
-		"loanTermFrequencyType": true
-	  }
-	}
+      "isHiddenField": {
+        "fundId": false,
+        "linkAccountId": true,
+        "createStandingInstruction": true,
+        "numberOfRepayments": true,
+        "repaymentEvery": true,
+        "repaymentFrequencyType": true,
+        "repaymentFrequencyNthDayType": true,
+        "repaymentFrequencyDayOfWeekType": true,
+        "interestChargedFromDate": true,
+        "repaymentsStartingFromDate": true,
+        "interestType": true,
+        "amortizationType": true,
+        "interestCalculationPeriodType": true,
+        "inArrearsTolerance": true,
+        "graceOnInterestCharged": true,
+        "transactionProcessingStrategyId": true,
+        "graceOnInterestPayment": true,
+        "graceOnArrearsAgeing": true
+      },
+      "isHiddenSection": {
+        "interestRecalculationSection": true,
+        "collateralSection": true
+      },
+      "isReadOnlyField": {
+        "loanTermFrequencyType": true,
+        "submittedOnDate": true,
+        "displayName": true
+      },
+      "isDefaultValue": {
+        "fundId": 45
+      }
+    },
+
+    "editLoanAccount":{
+
+      "isHiddenField": {
+        "linkAccountId": true,
+        "createStandingInstruction": true,
+        "numberOfRepayments": true,
+        "repaymentEvery": true,
+        "repaymentFrequencyType": true,
+        "repaymentFrequencyNthDayType": true,
+        "repaymentFrequencyDayOfWeekType": true,
+        "interestChargedFromDate": true,
+        "repaymentsStartingFromDate": true,
+        "interestType": true,
+        "amortizationType": true,
+        "interestCalculationPeriodType": true,
+        "inArrearsTolerance": true,
+        "graceOnInterestCharged": true,
+        "transactionProcessingStrategyId": true,
+        "graceOnInterestPayment": true,
+        "graceOnArrearsAgeing": true
+      },
+      "isHiddenSection": {
+        "interestRecalculationSection": true,
+        "collateralSection": true
+      },
+
+      "isReadOnlyField":{
+        "loanTermFrequencyType": true,
+        "submittedOnDate": true,
+        "externalId": true,
+        "displayName": true
+      }
+    },
+
+    "createCenter":{
+      "isReadOnlyField":{
+        "active": true,
+        "submittedon": true,
+        "activationDate": true
+      }
+    },
+
+    "createGroup":{
+      "isReadOnlyField":{
+        "active": true,
+        "submittedon": true,
+        "activationDate": true,
+        "name": true,
+        "displayName": true
+      }
+    },
+
+    "createClient":{
+      "isReadOnlyField":{
+        "name": true,
+        "displayName": true
+      }
+    },
+
+    "editClient":{
+      "isReadOnlyField":{
+        "externalId": true
+      }
+    }
   }
 }

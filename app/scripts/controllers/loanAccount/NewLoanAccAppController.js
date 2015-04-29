@@ -10,7 +10,6 @@
             scope.collateralFormData = {}; //For collaterals
             scope.inparams = {resourceType: 'template', activeOnly: 'true'};
             scope.date = {};
-
             scope.date.first = new Date();
             if (scope.clientId) {
                 scope.inparams.clientId = scope.clientId;
@@ -50,6 +49,15 @@
                 resourceFactory.loanResource.get(scope.inparams, function (data) {
                     scope.loanaccountinfo = data;
                     scope.previewClientLoanAccInfo();
+                    if(scope.loanaccountinfo.loanOfficerOptions){
+
+                        resourceFactory.clientResource.get({clientId: routeParams.clientId}, function (data) {
+                            if(data.staffId != null){
+                                scope.loanaccountinfo.loanOfficerOptions.id = data.staffId;
+                                scope.formData.loanOfficerId =  scope.loanaccountinfo.loanOfficerOptions.id;
+                            }
+                        })
+                    }
                 });
 
                 resourceFactory.loanResource.get({resourceType: 'template', templateType: 'collateral', productId: loanProductId, fields: 'id,loanCollateralOptions'}, function (data) {
@@ -67,9 +75,15 @@
                     scope.formData.syncRepaymentsWithMeeting = true;
                     scope.formData.syncDisbursementWithMeeting = true;
                 }
+                if(scope.response.uiDisplayConfigurations.loanAccount.isDefaultValue.fundId != null) {
+                    scope.formData.fundId = scope.response.uiDisplayConfigurations.loanAccount.isDefaultValue.fundId;
+                }
+                else{
+                    scope.formData.fundId = scope.loanaccountinfo.fundId;
+                }
+
                 scope.multiDisburseLoan = scope.loanaccountinfo.multiDisburseLoan;
                 scope.formData.productId = scope.loanaccountinfo.loanProductId;
-                scope.formData.fundId = scope.loanaccountinfo.fundId;
                 scope.formData.principal = scope.loanaccountinfo.principal;
                 scope.formData.loanTermFrequency = scope.loanaccountinfo.termFrequency;
                 scope.formData.loanTermFrequencyType = scope.loanaccountinfo.termPeriodFrequencyType.id;

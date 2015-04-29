@@ -1,4 +1,5 @@
-# MifosX Community App
+
+# chaitanyacommunity-app
 
 This is the default web application built on top of the MifosX platform for the mifos user community. It is a Single-Page App (SPA) written in web standard technologies like JavaScript, CSS and HTML5. It leverages common popular frameworks/libraries such as AngularJS, Bootstrap and Font Awesome.
 
@@ -113,4 +114,3 @@ Just open test/SpecRunner.html in the browser.
 ## Contribution guidelines
 
 Please read the <a href="https://github.com/openMF/community-app/blob/master/Contributing.md" >contribution guidelines</a>
-
