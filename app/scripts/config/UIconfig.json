@@ -6,8 +6,8 @@
         "fundId": false,
         "linkAccountId": true,
         "createStandingInstruction": true,
-        "numberOfRepayments": true,
-        "repaymentEvery": true,
+        "numberOfRepayments": false,
+        "repaymentEvery": false,
         "repaymentFrequencyType": true,
         "repaymentFrequencyNthDayType": true,
         "repaymentFrequencyDayOfWeekType": true,
@@ -21,8 +21,8 @@
         "transactionProcessingStrategyId": true,
         "graceOnInterestPayment": true,
         "graceOnArrearsAgeing": true,
-        "loanTermFrequencyType": true,
-        "fixedEmiAmount": true,
+        "loanTermFrequencyType": false,
+        "fixedEmiAmount": false,
         "graceOnArrearsAgeing": true
       },
       "isHiddenSection": {
@@ -31,9 +31,10 @@
       },
       "isReadOnlyField": {
         "loanTermFrequencyType": true,
-        "submittedOnDate": true,
+        "repaidEveryFrequencyType": true,
+        "submittedOnDate": false,
         "displayName": true,
-        "interestRatePerPeriod": true,
+        "interestRatePerPeriod": false,
         "displayName": true
       },
       "isDefaultValue": {
@@ -46,13 +47,13 @@
       "isHiddenField": {
         "linkAccountId": true,
         "createStandingInstruction": true,
-        "numberOfRepayments": true,
-        "repaymentEvery": true,
+        "numberOfRepayments": false,
+        "repaymentEvery": false,
         "repaymentFrequencyType": true,
         "repaymentFrequencyNthDayType": true,
         "repaymentFrequencyDayOfWeekType": true,
         "interestChargedFromDate": true,
-        "repaymentsStartingFromDate": true,
+        "repaymentsStartingFromDate": false,
         "interestType": true,
         "amortizationType": true,
         "interestCalculationPeriodType": true,
@@ -61,8 +62,8 @@
         "transactionProcessingStrategyId": true,
         "graceOnInterestPayment": true,
         "graceOnArrearsAgeing": true,
-        "loanTermFrequencyType": true,
-        "fixedEmiAmount": true,
+        "loanTermFrequencyType": false,
+        "fixedEmiAmount": false,
         "graceOnArrearsAgeing": true
       },
       "isHiddenSection": {
@@ -72,10 +73,10 @@
 
       "isReadOnlyField":{
         "loanTermFrequencyType": true,
-        "submittedOnDate": true,
+        "submittedOnDate": false,
         "externalId": true,
         "displayName": true,
-        "interestRatePerPeriod": true,
+        "interestRatePerPeriod": false,
         "displayName": true
       }
     },
@@ -83,16 +84,16 @@
     "createCenter":{
       "isReadOnlyField":{
         "active": true,
-        "submittedon": true,
-        "activationDate": true
+        "submittedon": false,
+        "activationDate": false
       }
     },
 
     "createGroup":{
       "isReadOnlyField":{
         "active": true,
-        "submittedon": true,
-        "activationDate": true,
+        "submittedon": false,
+        "activationDate": false,
         "name": true,
         "displayName": true
       }
