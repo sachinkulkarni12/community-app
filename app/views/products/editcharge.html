@@ -73,6 +73,17 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group" ng-show="showDisbursementTypeField">
+                <label class="control-label col-sm-2">{{'label.input.disbursementchargetype' | translate}}<span
+                            class="required">*</span></label>
+
+                <div class="col-sm-3">
+                    <select id="disbursementChargeType" ng-model="formData.disbursementChargeType"
+                         data-ng-options="disbursementtype.id as disbursementtype.value for disbursementtype in template.disbursementChargeTypeOptions"
+                         value="{{disbursementtype.id}}" class="form-control" ng-disabled="disable">
+                    </select>
+                </div>
+            </div>
             <div class="form-group" ng-show="showdatefield">
                 <label class="control-label col-sm-2">{{'label.input.duedate' | translate}}<span
                         class="required">*</span></label>

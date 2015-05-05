@@ -6,8 +6,8 @@
             scope.repeatEvery = false;
             scope.first = {};
             scope.flag = false;
-
-             resourceFactory.chargeResource.getCharge({chargeId: routeParams.id, template: true}, function (data) {
+            scope.disable = true;
+            resourceFactory.chargeResource.getCharge({chargeId: routeParams.id, template: true}, function (data) {
                 scope.template = data;
 
                 if (data.chargeAppliesTo.value === "Loan") {
@@ -37,6 +37,13 @@
                     scope.addfeefrequency = 'true';
                     scope.formData.feeFrequency = data.feeFrequency.id;
                     scope.formData.feeInterval = data.feeInterval;
+                }
+
+                if(data.chargeTimeType.id == 1){
+                    scope.formData.disbursementChargeType = data.disbursementChargeType.id;
+                    scope.showDisbursementTypeField = true;
+                }else{
+                    scope.showDisbursementTypeField = false;
                 }
 
                 //when chargeAppliesTo is savings, below logic is
@@ -87,7 +94,15 @@
                     }
                 }
             }
-            
+
+            scope.changeChargeCalculationType = function(chargeCalculationId){
+                if(chargeCalculationId == 2){
+                        scope.formData.disbursementChargeType = 0;
+                        scope.disable = true;
+                    }else{
+                        scope.disable = false;
+                    }
+            }
             scope.submit = function () {
                 if (scope.formData.chargeAppliesTo === 2) {
                     if (scope.showdatefield === true) {

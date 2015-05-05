@@ -460,7 +460,8 @@
                         this.formData.disbursementData.push({
                             id: scope.disbursementDetails[i].id,
                             principal: scope.disbursementDetails[i].principal,
-                            expectedDisbursementDate: dateFilter(scope.disbursementDetails[i].expectedDisbursementDate, scope.df)
+                            expectedDisbursementDate: dateFilter(scope.disbursementDetails[i].expectedDisbursementDate, scope.df),
+                            loanChargeId : scope.disbursementDetails[i].loanChargeId
                         });
                     }
                     resourceFactory.LoanEditDisburseResource.update({loanId: routeParams.id, disbursementId: routeParams.disbursementId}, this.formData, function (data) {
@@ -473,7 +474,8 @@
                                 id:scope.disbursementDetails[i].id,
                                 principal: scope.disbursementDetails[i].principal,
                                 expectedDisbursementDate: dateFilter(scope.disbursementDetails[i].expectedDisbursementDate, scope.df),
-                                loanChargeId: scope.disbursementDetails[i].loanChargeId
+
+                                loanChargeId : scope.disbursementDetails[i].loanChargeId
                             });
                     }
 
