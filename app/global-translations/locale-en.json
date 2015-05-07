@@ -1635,6 +1635,7 @@
     "label.heading.feeorpenalty": "Fee/Penalty",
     "label.heading.paymentdueat": "Payment due at",
     "label.heading.dueasof": "Due as of",
+    "label.heading.disbursementon": "Disbursement On",
     "label.heading.repeatson": "Repeats On",
     "label.heading.calculationtype": "Calculation Type",
     "label.heading.disbursementtype": "Disbursement Charge Type",

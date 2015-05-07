@@ -699,6 +699,7 @@
                                 <th>{{'label.heading.name' | translate}}</th>
                                 <th>{{'label.heading.feeorpenalty' | translate}}</th>
                                 <th>{{'label.heading.paymentdueat' | translate}}</th>
+                                <th>{{'label.heading.disbursementon' | translate}}</th>
                                 <th>{{'label.heading.dueasof' | translate}}</th>
                                 <th>{{'label.heading.calculationtype' | translate}}</th>
                                 <th>{{'label.heading.due' | translate}}</th>
@@ -712,6 +713,7 @@
                                 <td ng-show="charge.penalty" class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{"penalty"}}</td>
                                 <td ng-hide="charge.penalty" class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{"fee"}}</td>
                                 <td class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{charge.chargeTimeType.value}}</td>
+                                <td class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{charge.disbursementDate | DateFormat}}</td>
                                 <td class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{charge.dueDate | DateFormat}}</td>
                                 <td class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{charge.chargeCalculationType.value}}</td>
                                 <td class="pointer" data-ng-click="viewLoanChargeDetails(charge.id)">{{charge.currency.displaySymbol}}{{charge.amount| number}}</td>
