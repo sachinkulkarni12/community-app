@@ -2,6 +2,7 @@
     mifosX.controllers = _.extend(module, {
         CreateCenterController: function (scope, resourceFactory, location, dateFilter) {
             scope.offices = [];
+            scope.villages = [];
             scope.staffs = [];
             scope.data = {};
             scope.first = {};
@@ -10,22 +11,43 @@
             scope.restrictDate = new Date();
             scope.first.date = new Date();
             scope.addedGroups = [];
+            scope.villageCount = {};
+            scope.count = "";
+
             resourceFactory.centerTemplateResource.get({staffInSelectedOfficeOnly:true},function (data) {
                 scope.offices = data.officeOptions;
+                scope.villageCount = data.villageCounter;
                 scope.staffs = data.staffOptions;
                 scope.groups = data.groupMembersOptions;
                 scope.formData.officeId = data.officeOptions[0].id;
             });
 
             scope.changeOffice = function () {
+                scope.formData.villageId = null;
+                scope.villageCount = null;
                 resourceFactory.centerTemplateResource.get({staffInSelectedOfficeOnly:true, officeId: scope.formData.officeId
                 }, function (data) {
                     scope.staffs = data.staffOptions;
                 });
+
+                resourceFactory.centerTemplateResource.get({officeId: scope.formData.officeId, villagesInSelectedOfficeOnly:true}, function (data) {
+                        scope.villages = data.villageOptions;
+                });
+
                 resourceFactory.centerTemplateResource.get({officeId: scope.formData.officeId }, function (data) {
                     scope.groups = data.groupMembersOptions;
                 });
             };
+
+            scope.changeVillage = function () {
+                 resourceFactory.centerTemplateResource.get({officeId: scope.formData.officeId, villagesInSelectedOfficeOnly:true,
+                    villageId: scope.formData.villageId}, function (data) {
+                     scope.villageCount = data.villageCounter;
+                     scope.count = scope.villageCount.counter+1;
+                   //  scope.villageCount.counter = scope.count;
+                });
+            }
+
             scope.setChoice = function () {
                 if (this.formData.active) {
                     scope.choice = 1;
@@ -60,6 +82,8 @@
             scope.submit = function () {
                 var reqDate = dateFilter(scope.first.date, scope.df);
                 this.formData.activationDate = reqDate;
+
+                this.formData.name = scope.villageCount.villageName +" " + (scope.villageCount.counter+1);
 
                 if (scope.first.submitondate) {
                     reqDate = dateFilter(scope.first.submitondate, scope.df);
