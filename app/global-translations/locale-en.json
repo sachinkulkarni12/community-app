@@ -2807,7 +2807,6 @@
     "chargeCalculationType.percent.of.amount": "% Approved Amount",
     "chargeCalculationType.percent.of.amount.and.interest": "% Loan Amount + Interest",
     "chargeCalculationType.percent.of.interest": "% Interest",
-    "chargeCalculationType.percent.of.proposed.amount":"% Proposed Amount",
     "chargeCalculationType.percent.of.disbursement.amount":"% Disbursement Amount",
     "chargepaymentmode.regular": "Regular Mode",
     "chargepaymentmode.accounttransfer": "Account Transfer Mode",

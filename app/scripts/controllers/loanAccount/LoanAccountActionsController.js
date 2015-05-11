@@ -474,7 +474,6 @@
                                 id:scope.disbursementDetails[i].id,
                                 principal: scope.disbursementDetails[i].principal,
                                 expectedDisbursementDate: dateFilter(scope.disbursementDetails[i].expectedDisbursementDate, scope.df),
-
                                 loanChargeId : scope.disbursementDetails[i].loanChargeId
                             });
                     }
