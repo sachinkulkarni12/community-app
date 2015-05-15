@@ -22,9 +22,14 @@
                 scope.formData.officeId = data.officeOptions[0].id;
             });
 
+            scope.$watch(scope.formData.officeId, function() {
+                scope.changeOffice();
+            });
+
             scope.changeOffice = function () {
-                scope.formData.villageId = null;
+              scope.formData.villageId = null;
                 scope.villageCount = null;
+
                 resourceFactory.centerTemplateResource.get({staffInSelectedOfficeOnly:true, officeId: scope.formData.officeId
                 }, function (data) {
                     scope.staffs = data.staffOptions;
@@ -44,7 +49,6 @@
                     villageId: scope.formData.villageId}, function (data) {
                      scope.villageCount = data.villageCounter;
                      scope.count = scope.villageCount.counter+1;
-                   //  scope.villageCount.counter = scope.count;
                 });
             }
 
