@@ -21,7 +21,9 @@
                 scope.groups = data.groupMembersOptions;
                 scope.formData.officeId = data.officeOptions[0].id;
             });
-
+			    scope.$watch(scope.formData.officeId, function() {
+                scope.changeOffice();
+            });
             scope.changeOffice = function () {
                 scope.formData.villageId = null;
                 scope.villageCount = null;
