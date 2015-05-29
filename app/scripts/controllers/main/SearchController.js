@@ -60,6 +60,18 @@
                 });
             };
 
+            scope.getVillageDetails = function (villageId) {
+
+                scope.selected = villageId;
+
+                resourceFactory.villageResource.get({villageId: villageId, associations: 'setOfCenters'}, function (data) {
+                    scope.client = '';
+                    scope.group = '';
+                    scope.center = '';
+                    scope.village = data;
+                });
+            };
+
         }
     });
     mifosX.ng.application.controller('SearchController', ['$scope', '$routeParams', 'ResourceFactory', mifosX.controllers.SearchController]).run(function ($log) {
