@@ -1300,6 +1300,8 @@
     "label.input.syncdisbursementdatewithmeeting": "Sync disbursement date with meeting",
     "label.input.loanterm": "Loan term",
     "label.input.expecteddisbursementon": "Expected disbursement on",
+    "label.input.nextrepaymentdate": "Next Repayment Date",
+    "label.input.adjusteddate": "New Reschedule Date",
     "label.input.interestchargedfrom": "Interest charged from",
     "label.input.firstrepaymenton": "First repayment on",
     "label.input.value": "Value",
