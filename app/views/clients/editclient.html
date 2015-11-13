@@ -1,5 +1,4 @@
-<form name="editclientform" novalidate="" class="col-md-12 form-horizontal" ng-controller="EditClientController"
-      rc-submit="submit()">
+<form name="editclientform" novalidate="" class="col-md-12 form-horizontal" ng-controller="EditClientController" rc-submit="submit()">
     <div>
         <ul class="breadcrumb">
             <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
@@ -154,9 +153,6 @@
 	            </div>
 	        </div>
 
-
-
-
 	        <div class="form-group" ng-show="showSavingOptions">
 	            <label class="control-label col-sm-2">{{ 'label.input.opensavingsproduct' | translate }}&nbsp;</label>
 	
@@ -176,7 +172,70 @@
 	                </select>
 	            </div>
 	        </div>
-	        <div class="col-md-offset-3">
+			<br>
+			<strong>{{ datatablename }}</strong>
+
+			<div class="form-group" ng-repeat="columnHeader in columnHeaders">
+				<form ng-class="{true : 'form-inline' , false : 'form-horizontal'}[status]">
+				<div class="form-group" ng-repeat="columnHeaderData in columnHeader">
+
+						<label class="control-label col-sm-2" ng-show="columnHeaderData.showField == true">{{ columnHeaderData.columnName | prettifyDataTableColumn}}
+							<span ng-show="!columnHeaderData.isColumnNullable && columnHeaderData.showField == true" class="required">*</span>
+						</label>
+						<div class="col-sm-3">
+							<input ng-show="fieldType(columnHeaderData.columnDisplayType) == 'TEXT' && columnHeaderData.showField == true" type="text"
+								   ng-model="formDat[columnHeaderData.newColumnName]" class="form-control"/>
+							<input ng-show="fieldType(columnHeaderData.columnDisplayType) == 'DATE'" type="text"
+								   datepicker-pop="dd MMMM yyyy" ng-model="formDat[columnHeaderData.newColumnName]"
+								   is-open="opened{{$index}}" class="form-control"/>
+
+							<div ng-show="fieldType(columnHeaderData.columnDisplayType) == 'DATETIME'" class="form-inline">
+								<div class="form-group">
+									<input type="text" datepicker-pop="dd MMMM yyyy"
+										   ng-model="formDat[columnHeaderData.newColumnName].date"
+										   is-open="opened{{$index}}" class="form-control"/>
+								</div>
+								<div class="form-group">
+									<input type="time" placeholder="HH:MM:SS"
+										   ng-model="formDat[columnHeaderData.newColumnName].time" class="form-control"/>
+								</div>
+							</div>
+							<div ng-show="fieldType(columnHeaderData.columnDisplayType) == 'BOOLEAN'">
+								<label class="radio-inline">
+									<input type="radio" ng-model="formDat[columnHeaderData.newColumnName]"
+										   value="true" ng-click="getDependencyColumns(true)"/>
+									{{'label.input.true' | translate}}
+								</label>
+								<label class="radio-inline">
+									<input type="radio" ng-model="formDat[columnHeaderData.newColumnName]"
+										   value="false" ng-click="getDependencyColumns(false)"/>
+									{{'label.input.false' | translate}}
+								</label>
+							</div>
+						<span data-ng-switch on="columnHeaderData.columnDisplayType">
+							 <select ng-show="fieldType(columnHeaderData.columnDisplayType) == 'SELECT'"
+									 data-ng-switch-when="CODELOOKUP"
+									 ng-model="formDat[columnHeaderData.newColumnName]"
+									 ng-options="columnValue.id as columnValue.value for columnValue in columnHeaderData.columnValues"
+									 value="{{columnValue.id}}" class="form-control"
+									 ng-change="getDependencyList(formDat[columnHeaderData.columnName])">
+								 <option value="">{{'label.selectone' | translate}}</option>
+							 </select>
+
+							<select ng-show="fieldType(columnHeaderData.columnDisplayType) == 'SELECT'"
+									data-ng-switch-when="CODEVALUE"
+									ng-model="formDat[columnHeaderData.newColumnName]"
+									ng-options="columnValue.value as columnValue.value for columnValue in columnHeaderData.columnValues"
+									value="{{columnValue.id}}" class="form-control">
+								<option value="">{{'label.selectone' | translate}}</option>
+							</select>
+						</span>
+						</div>
+				</div>
+				</form><br>
+			</div>
+
+			<div class="col-md-offset-3">
 	            <a id="cancel" href="#/viewclient/{{clientId}}">
 	                <button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
 	            </a>

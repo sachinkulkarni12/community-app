@@ -36,14 +36,23 @@
             <legend>{{ 'label.heading.datatablename' | translate }}-<strong>{{tableName}}</strong></legend>
         </fieldset>
         <div class="form-group" ng-repeat="columnHeader in columnHeaders">
-            <label class="control-label col-sm-3">{{ columnHeader.columnName | prettifyDataTableColumn}}
+            <div ng-repeat="visibilityCriteria in columnHeader.visibilityCriteria">
+                <div ng-repeat="values in visibilityCriteria.columnValue">
+                    <label class="control-label col-sm-3" ng-if="!values.value">{{ columnHeader.columnName | prettifyDataTableColumn }}
+                        <span ng-show="!columnHeader.isColumnNullable" class="required">*</span>
+                    </label>
+                </div>
+            </div>
+            <label class="control-label col-sm-3" ng-show="columnHeader.visibilityCriteria == ''">{{ columnHeader.columnName | prettifyDataTableColumn }}
                 <span ng-show="!columnHeader.isColumnNullable" class="required">*</span>
             </label>
+            <label class="control-label col-sm-3" ng-if="columnHeader.labelDisplayType == 'false'"></label>
 
             <div class="col-sm-3">
-                <input ng-show="fieldType(columnHeader.columnDisplayType) == 'TEXT'" type="text"
+                <input ng-show="fieldType(columnHeader.columnDisplayType) == 'TEXT' && enableDependency"
+                        type="text"
                        ng-model="formData[columnHeader.columnName]" class="form-control"/>
-                <input ng-show="fieldType(columnHeader.columnDisplayType) == 'DATE'" type="text"
+                <input ng-show="fieldType(columnHeader.columnDisplayType) == 'DATE' && enableDependency" type="text"
                        datepicker-pop="dd MMMM yyyy" ng-model="formDat[columnHeader.columnName]"
                        is-open="opened{{$index}}" class="form-control"/>
                 <div ng-show="fieldType(columnHeader.columnDisplayType) == 'DATETIME'" class="form-inline">
@@ -60,12 +69,12 @@
                 <div ng-show="fieldType(columnHeader.columnDisplayType) == 'BOOLEAN'">
                     <label class="radio-inline">
                         <input type="radio" ng-model="formData[columnHeader.columnName]"
-                           value="true"/>
+                           value="true" ng-click="getDependencyColumns(true)"/>
                         {{'label.input.true' | translate}}
                     </label>
                     <label class="radio-inline">
                         <input type="radio" ng-model="formData[columnHeader.columnName]"
-                               value="false"/>
+                               value="false" ng-click="getDependencyColumns(false)"/>
                         {{'label.input.false' | translate}}
                     </label>
                 </div>
@@ -73,17 +82,17 @@
                     <select ng-show="fieldType(columnHeader.columnDisplayType) == 'SELECT'"
                             data-ng-switch-when="CODELOOKUP"
                             ng-model="formData[columnHeader.columnName]"
-                            ng-options="columnValue.id as columnValue.value for columnValue in columnHeader.columnValues"
-                            value="{{columnValue.id}}" class="form-control">
+                            ng-options="columnValue.id as columnValue.value for columnValue in columnHeader.columnValuesLookup"
+                            value="{{columnValue.id}}" class="form-control" ng-change="getDependencyList(formData[columnHeader.columnName])">
                         <option value="">{{'label.selectone' | translate}}</option>
                     </select>
                     <select ng-show="fieldType(columnHeader.columnDisplayType) == 'SELECT'"
-                            data-ng-switch-when="CODEVALUE"
-                            ng-model="formData[columnHeader.columnName]"
-                            ng-options="columnValue.value as columnValue.value for columnValue in columnHeader.columnValues"
-                            value="{{columnValue.id}}" class="form-control">
-                        <option value="">{{'label.selectone' | translate}}</option>
-                    </select>
+                                        data-ng-switch-when="CODEVALUE"
+                                        ng-model="formData[columnHeader.columnName]"
+                                        ng-options="columnValue.value as columnValue.value for columnValue in columnHeader.columnValues"
+                                        value="{{columnValue.id}}" class="form-control">
+                    <option value="">{{'label.selectone' | translate}}</option>
+                </select>
                 </span>
             </div>
 
