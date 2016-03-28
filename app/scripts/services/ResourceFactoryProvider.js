@@ -77,6 +77,14 @@
                     clientIdenfierResource: defineResource(apiVer + "/clients/:clientId/identifiers/:id", {clientId: '@clientId', id: '@id'}, {
                         get: {method: 'GET', params: {}}
                     }),
+
+                    surveyResource: defineResource(apiVer + "/surveys", {}, {
+                        get: {method: 'GET', params: {}, isArray: true}
+                    }),
+                    surveyScorecardResource: defineResource(apiVer + "/surveys/:surveyId/scorecards", {surveyId: '@surveyId'}, { 
+                        post: {method: 'POST', params: {}, isArray: false}                       
+                    }),
+
                     groupResource: defineResource(apiVer + "/groups/:groupId/:anotherresource", {groupId: '@groupId', anotherresource: '@anotherresource'}, {
                         get: {method: 'GET', params: {}},
                         getAllGroups: {method: 'GET', params: {}, isArray: true},
@@ -554,6 +562,18 @@
                         validate:{method:'POST',params:{command: 'calculateLoanSchedule'}},
                         addVariations:{method:'POST',params:{command: 'addVariations'}},
                         deleteVariations:{method:'POST',params:{command: 'deleteVariations'}}
+                    }),
+                    taxcomponent: defineResource(apiVer + "/taxes/component/:taxComponentId",{taxComponentId:'@taxComponentId'},{
+                        getAll: {method: 'GET', params: {}, isArray : true},
+                        put: {method: 'PUT', params: {}}
+                    }),
+                    taxcomponenttemplate: defineResource(apiVer + "/taxes/component/template",{},{
+                    }),
+                    taxgroup: defineResource(apiVer + "/taxes/group/:taxGroupId",{taxGroupId:'@taxGroupId'},{
+                        getAll: {method: 'GET', params: {}, isArray : true},
+                        put: {method: 'PUT', params: {}}
+                    }),
+                    taxgrouptemplate: defineResource(apiVer + "/taxes/group/template",{},{
                     })
                 };
             }];
